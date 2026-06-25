@@ -191,4 +191,4 @@ util/                                    # scheduler and distributed helpers
 
 ## Citation
 
-Please cite the MICCAI paper if you use this code. A BibTeX entry can be added here once the proceedings metadata is available.
+Please cite the MICCAI paper if you use this code. Citation coming soon.
