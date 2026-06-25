@@ -1,0 +1,65 @@
+// ********** Image Types
+(FixedInternalImagePixelType "short")
+(FixedImageDimension 3)
+(MovingInternalImagePixelType "short")
+(MovingImageDimension 3)
+(UseDirectionCosines "true")
+
+
+// ********** Components
+//(Registration "MultiResolutionRegistration")
+(Registration "MultiMetricMultiResolutionRegistration")
+(NumberOfResolutions 5)
+(FixedImagePyramid "FixedSmoothingImagePyramid")
+(FixedImagePyramidSchedule 16 16 16 8 8 8 4 4 4 2 2 2 1 1 1)
+(MovingImagePyramid "MovingSmoothingImagePyramid")
+(MovingImagePyramidSchedule 16 16 16 8 8 8 4 4 4 2 2 2 1 1 1)
+
+// ********** Transform
+(Transform "BSplineTransform")
+(FinalGridSpacingInPhysicalUnits 6.0 6.0 6.0)
+//(FinalGridSpacingInVoxels 8.0 8.0 8.0)
+(GridSpacingSchedule 8.0 8.0 4.0 2.0 1.0)
+(HowToCombineTransforms "Compose")
+
+// ********** Optimizer
+(Optimizer "AdaptiveStochasticGradientDescent")
+(MaximumNumberOfIterations 1000)
+
+// ********** Metric
+(Metric "AdvancedMattesMutualInformation" "TransformBendingEnergyPenalty")
+//(Metric "AdvancedMattesMutualInformation")
+(NumberOfHistogramBins 32)
+(UseRelativeWeights "true")
+(Metric0RelativeWeight 1.0)
+(Metric1RelativeWeight 0.05)
+
+(FixedKernelBSplineOrder 1)
+(MovingKernelBSplineOrder 3)
+
+// ********** ImageSampler
+(ImageSampler "RandomCoordinate")
+(NumberOfSpatialSamples 2048)
+(NewSamplesEveryIteration "true")
+(UseRandomSampleRegion "false")
+
+// ********** Interpolator and Resampler
+(Resampler "DefaultResampler")
+
+(Interpolator "BSplineInterpolator")
+(BSplineInterpolationOrder 1)
+
+(ResampleInterpolator "FinalBSplineInterpolator")
+(FinalBSplineInterpolationOrder 3)
+
+// ********** Several
+(WriteTransformParametersEachIteration "false")
+(WriteTransformParametersEachResolution "false")
+(WriteResultImageAfterEachResolution "false")
+(WriteResultImage "true")
+(ResultImageFormat ".nii.gz")
+(ResultImagePixelType "short")
+(ShowExactMetricValue "false")
+(ErodeMask "false")
+(DefaultPixelValue -1000)
+

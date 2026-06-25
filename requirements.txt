@@ -1,0 +1,10 @@
+numpy
+pandas
+nibabel
+SimpleITK
+lungmask
+monai
+torch
+matplotlib
+tqdm
+tensorboard

@@ -1,0 +1,54 @@
+//ImageTypes
+(FixedInternalImagePixelType "float")
+(FixedImageDimension 3)
+(MovingInternalImagePixelType "float")
+(MovingImageDimension 3)
+(UseDirectionCosines "true")
+
+//Components
+(Registration "MultiResolutionRegistration")
+(NumberOfResolutions 4)
+(FixedImagePyramid "FixedSmoothingImagePyramid")
+(MovingImagePyramid "MovingSmoothingImagePyramid")
+
+// ********** Transform
+(Transform "EulerTransform")
+(AutomaticTransformInitialization "true")
+(AutomaticScalesEstimation "true")
+(HowToCombineTransforms "Compose")
+
+// ********** Optimizer
+(Optimizer "AdaptiveStochasticGradientDescent")
+(MaximumNumberOfIterations 1000)
+
+// ********** Metric
+(Metric "AdvancedMattesMutualInformation")
+(NumberOfHistogramBins 32)
+(FixedKernelBSplineOrder 1)
+(MovingKernelBSplineOrder 3)
+
+// ********** ImageSampler
+//Number of spatial samples used to compute the mutual information in each resolution level:
+(ImageSampler "RandomCoordinate")
+(NumberOfSpatialSamples 2048)
+(NewSamplesEveryIteration "true")
+
+// ********** Interpolator and Resampler
+(Resampler "DefaultResampler")
+
+(Interpolator "BSplineInterpolator")
+(BSplineInterpolationOrder 1)
+
+(ResampleInterpolator "FinalBSplineInterpolator")
+(FinalBSplineInterpolationOrder 3)
+
+// ********** Several
+(WriteTransformParametersEachIteration "false")
+(WriteTransformParametersEachResolution "false")
+(WriteResultImage "true")
+(ResultImageFormat ".nii.gz")
+(ShowExactMetricValue "false")
+(ErodeFixedMask "false")
+(ErodeMovingMask "false")
+(UseDifferentiableOverlap "false")
+(DefaultPixelValue -1000)
